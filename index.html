@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KAERU COFFEE - v2.0 | Café y Postres Japoneses</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', Arial, sans-serif;}
+  body{background:#FFFBF2; color:#2B2118;}
+  /* HEADER NUEVO */
+  header{background:#2B2118; color:white; padding:14px 22px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; position:sticky; top:0; z-index:99; box-shadow:0 4px 20px rgba(0,0,0,.25);}
+  header h1{font-size:22px; letter-spacing:1px;}
+  header h1 span{background:#FFC94D; color:#2B2118; padding:2px 10px; border-radius:20px; font-size:14px; margin-left:6px;}
+  nav a{color:white; text-decoration:none; margin-left:14px; font-weight:600; font-size:14px;}
+  nav a:hover{color:#FFC94D;}
+  .badge-nuevo{background:#FF4D6D; color:white; font-size:11px; padding:3px 8px; border-radius:20px; margin-left:6px; vertical-align:middle;}
+  /* HERO NUEVO */
+  .hero{background:linear-gradient(135deg,#2B2118 0%,#5A3A1A 60%,#8A5A24 100%); color:white; text-align:center; padding:40px 18px 35px; border-radius:0 0 35px 35px;}
+  .hero .chip{background:rgba(255,255,255,.15); display:inline-block; padding:6px 14px; border-radius:20px; font-size:13px; margin-bottom:12px;}
+  .hero h2{font-family:'Playfair Display', Georgia, serif; font-size:52px; line-height:1.05; font-weight:600;}
+  .hero h2 i{color:#FFC94D; font-weight:600;}
+  .hero p{max-width:650px; margin:10px auto; color:#F5EEDD; font-weight:300;}
+  .hero img{width:92%; max-width:620px; border-radius:22px; border:5px solid white; margin-top:15px; box-shadow:0 15px 30px rgba(0,0,0,.4);}
+  .btn{background:white; color:#2B2118; border:none; padding:13px 24px; border-radius:30px; font-size:15px; cursor:pointer; margin-top:14px; font-weight:700; text-decoration:none; display:inline-block; transition:.3s;}
+  .btn:hover{background:#FFC94D; transform:scale(1.05);}
+  .btn-insta{background:#FF4D6D; color:white; border:none; padding:13px 24px; border-radius:30px; font-size:15px; cursor:pointer; font-weight:700; text-decoration:none; display:inline-block; margin-top:10px; transition:.3s;}
+  .btn-insta:hover{background:white; color:black; transform:scale(1.05);}
+  .btn2{background:#2B2118; color:white; border:none; padding:11px 18px; border-radius:30px; font-weight:700; cursor:pointer; margin-top:10px; transition:.3s; width:100%;}
+  .btn2:hover{background:#FFC94D; color:black; transform:translateY(-2px);}
+  /* SECCIONES */
+  .seccion{text-align:center; padding:28px 15px 5px;}
+  .seccion h2{font-size:34px; font-family:'Playfair Display', Georgia, serif;}
+  .seccion h2 i{color:#C07A1A; font-style:italic;}
+  .seccion p{color:#7A6A5A;}
+  .contenido{display:flex; flex-wrap:wrap; gap:18px; justify-content:center; padding:20px;}
+  .caja{background:white; padding:16px; border-radius:20px; width:340px; text-align:left; border:1px solid #F0E2C8; box-shadow:0 8px 20px rgba(0,0,0,.06); transition:.3s; overflow:hidden;}
+  .caja:hover{transform:translateY(-6px); box-shadow:0 15px 30px rgba(0,0,0,.12);}
+  .caja h3{font-size:18px;}
+  .caja p{font-size:14px; color:#7A6A5A; margin:6px 0;}
+  .caja img{width:100%; border-radius:14px; margin:10px 0; height:180px; object-fit:cover;}
+  .precio{color:#C07A1A; font-size:22px; font-weight:700;}
+  .etiqueta{background:#FFF1C9; color:#8A5A24; font-size:11px; font-weight:700; padding:4px 8px; border-radius:20px; display:inline-block;}
+  table{width:100%; border-collapse:collapse; margin-top:10px; background:white; color:#2B2118; border-radius:12px; overflow:hidden;}
+  th, td{padding:11px; text-align:left; font-size:14px; border-bottom:1px solid #F0E2C8;}
+  th{background:#2B2118; color:white;}
+  ul{margin-top:10px; margin-left:18px; text-align:left; font-size:14px; line-height:1.7;}
+  /* MUSICA NUEVO ESTILO */
+  .musica-box{background:white; max-width:640px; margin:18px auto 0; border-radius:22px; padding:18px; box-shadow:0 10px 25px rgba(0,0,0,.12); border:2px solid #FFC94D; text-align:center;}
+  .musica-box h3{font-size:18px;}
+  .musica-box p{font-size:14px; color:#7A6A5A;}
+  .controles-musica{margin:12px 0;}
+  .controles-musica button{background:#2B2118; color:white; border:none; padding:11px 16px; border-radius:30px; font-weight:700; cursor:pointer; margin:4px;}
+  .controles-musica button:hover{background:#FFC94D; color:black;}
+  .playlist{display:flex; flex-direction:column; gap:6px; margin-top:10px; text-align:left;}
+  .playlist button{background:#FFFBF2; color:#2B2118; border:1px solid #F0E2C8; width:100%; text-align:left; padding:11px 12px; border-radius:14px; cursor:pointer; font-weight:600;}
+  .playlist button.activa{background:#2B2118; color:white; border-color:#2B2118;}
+  .banner{text-align:center; padding:45px 15px; background:#2B2118; color:white; border-radius:35px; margin:20px 15px;}
+  .banner h2{font-size:36px; font-family:'Playfair Display', Georgia, serif;}
+  .banner h2 i{color:#FFC94D;}
+  footer{background:#2B2118; color:white; text-align:center; padding:22px; margin-top:20px;}
+  footer a{color:#FFC94D;}
+  .carrito{background:#FFC94D; color:black; padding:13px 18px; border-radius:30px; font-weight:700; cursor:pointer; position:fixed; bottom:15px; right:15px; box-shadow:0 8px 20px rgba(0,0,0,.3); z-index:99;}
+  .carrito:hover{transform:scale(1.05); background:white;}
+  .filtros button{background:white; border:1.5px solid #2B2118; padding:9px 16px; border-radius:30px; cursor:pointer; margin:4px; font-weight:700; transition:.3s;}
+  .filtros button:hover{background:#2B2118; color:white;}
+  .musica-btn{background:#2B2118; color:white; border:2px solid white; padding:10px 16px; border-radius:30px; font-weight:700; cursor:pointer; position:fixed; top:70px; right:15px; z-index:100; box-shadow:0 5px 15px rgba(0,0,0,.3);}
+  .musica-btn:hover{background:#FFC94D; color:black;}
+</style>
+</head>
+<body>
+
+<audio id="musica"></audio>
+<button class="musica-btn" id="btnMusica" onclick="sonar()">🎵 Play</button>
+
+<header>
+  <h1>☕ KAERU COFFEE <span>カエル v2.0</span><span class="badge-nuevo">ACTUALIZADO ✨</span></h1>
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#musica-seccion">Música</a>
+    <a href="#bebidas">Menú</a>
+    <a href="#postres">Postres</a>
+    <a href="#contacto">Contacto</a>
+    <a href="https://www.instagram.com/kaeru.coffee" target="_blank">📸 Instagram</a>
+  </nav>
+</header>
+
+<section class="hero" id="inicio">
+  <span class="chip">⛩️ ようこそ • BIENVENIDO A JAPÓN • ACTUALIZACIÓN 2.0 ⛩️</span>
+  <p style="font-size:28px; margin:0;">かえるコーヒー</p>
+  <p>抹茶 MATCHA • 桜 SAKURA • 餅 MOCHI • 日本 JAPÓN</p>
+  <h2>Un sabor de<br><i>alegría matutina</i></h2>
+  <p>朝の喜びの味</p>
+  <p>Mañanas lentas, matcha cálido y sabores de Japón. Ahora con nuevo diseño y nueva playlist.</p>
+  <p style="color:#FFC94D; font-weight:700;">いらっしゃいませ • Pasa, siéntate, disfruta 🍵</p>
+
+  <div class="musica-box" id="musica-seccion">
+    <h3>🎵 Playlist KAERU • Ahora con 6 canciones</h3>
+    <p id="sonandoTexto">Sonando: Stay With Me - Miki Matsubara • 真夜中のドア</p>
+    <div class="controles-musica">
+      <button onclick="anterior()">⏮ Anterior</button>
+      <button onclick="sonar()">▶️ / ⏸ Play / Pausa</button>
+      <button onclick="siguiente()">Siguiente ⏭</button>
+    </div>
+    <div class="playlist" id="playlist"></div>
+    <p style="font-size:12px; margin-top:8px;">✨ Nuevo en esta actualización: playlist completa, botones de siguiente / anterior y diseño renovado</p>
+  </div>
+
+  <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800" alt="Torii en Kyoto, Japón">
+  <p>📍 Kyoto, Japón • 京都</p>
+  <br>
+  <a href="#bebidas"><button class="btn">VER MENÚ 👇</button></a>
+  <br>
+  <a href="https://www.instagram.com/kaeru.coffee" target="_blank" class="btn-insta">📸 Síguenos en Instagram @kaeru.coffee</a>
+  <p id="mensaje" style="margin-top:10px; font-weight:bold; color:#FFC94D;"></p>
+</section>
+
+<div class="seccion" id="bebidas"><h2>Platos pequeños, <i>grandes sabores.</i></h2><p>小さな皿、大きな味 • Todo 100% Japón • Precios en yenes ¥</p>
+  <div class="filtros">
+    <button onclick="filtrar('Todo Japón')">Todo Japón</button>
+    <button onclick="filtrar('Bebidas Japonesas')">Bebidas Japonesas</button>
+    <button onclick="filtrar('Postres Japoneses')">Postres Japoneses</button>
+  </div>
+</div>
+
+<div class="contenido">
+  <div class="caja"><span class="etiqueta">⭐ MÁS PEDIDO</span><h3>Matcha Latte • 抹茶ラテ</h3><img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=600" alt="Matcha Latte"><p>Té verde matcha de Uji, Japón, con leche</p><p class="precio">¥650</p><button class="btn2" onclick="agregar('Matcha Latte',650)">+ Agregar</button></div>
+  <div class="caja"><span class="etiqueta">NUEVO</span><h3>Hojicha Latte • ほうじ茶ラテ</h3><img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600" alt="Hojicha Latte"><p>Té japonés tostado, sabor a caramelo</p><p class="precio">¥650</p><button class="btn2" onclick="agregar('Hojicha Latte',650)">+ Agregar</button></div>
+  <div class="caja"><span class="etiqueta">🌸 TEMPORADA</span><h3>Sakura Latte • 桜ラテ</h3><img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=600" alt="Sakura Latte"><p>Flor de cerezo japonesa, dulce y rosado</p><p class="precio">¥700</p><button class="btn2" onclick="agregar('Sakura Latte',700)">+ Agregar</button></div>
+  <div class="caja"><h3>Genmaicha Latte • 玄米茶ラテ</h3><img src="https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=600" alt="Genmaicha Latte"><p>Té verde japonés con arroz tostado</p><p class="precio">¥600</p><button class="btn2" onclick="agregar('Genmaicha Latte',600)">+ Agregar</button></div>
+  <div class="caja"><h3>Yuzu Lemonade • 柚子レモネード</h3><img src="https://images.unsplash.com/photo-1621263764928-df1444c5e859?w=600" alt="Yuzu Lemonade"><p>Limonada de yuzu, cítrico japonés</p><p class="precio">¥550</p><button class="btn2" onclick="agregar('Yuzu Lemonade',550)">+ Agregar</button></div>
+  <div class="caja"><h3>Ramune • ラムネ</h3><img src="https://images.unsplash.com/photo-1554866585-cd94860890b7?w=600" alt="Ramune"><p>Soda japonesa tradicional de sabores</p><p class="precio">¥180</p><button class="btn2" onclick="agregar('Ramune',180)">+ Agregar</button></div>
+  <div class="caja"><span class="etiqueta">⭐ FAVORITO</span><h3>Mochi (3 pzs) • 餅</h3><img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600" alt="Mochi"><p>Suave arroz japonés con matcha o fresa</p><p class="precio">¥450</p><button class="btn2" onclick="agregar('Mochi',450)">+ Agregar</button></div>
+  <div class="caja"><h3>Dorayaki • どら焼き</h3><img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600" alt="Dorayaki"><p>Hotcakes japoneses con frijol dulce anko</p><p class="precio">¥220</p><button class="btn2" onclick="agregar('Dorayaki',220)">+ Agregar</button></div>
+  <div class="caja"><h3>Taiyaki • たい焼き</h3><img src="https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=600" alt="Taiyaki"><p>Pezecito japonés relleno de crema</p><p class="precio">¥250</p><button class="btn2" onclick="agregar('Taiyaki',250)">+ Agregar</button></div>
+  <div class="caja"><h3>Cheesecake Japonés • チーズケーキ</h3><img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=600" alt="Cheesecake"><p>Esponjoso y súper suave, estilo Osaka</p><p class="precio">¥680</p><button class="btn2" onclick="agregar('Cheesecake Japones',680)">+ Agregar</button></div>
+  <div class="caja"><h3>Daifuku de Fresa • いちご大福</h3><img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600" alt="Daifuku"><p>Mochi japonés con fresa y crema</p><p class="precio">¥280</p><button class="btn2" onclick="agregar('Daifuku de Fresa',280)">+ Agregar</button></div>
+  <div class="caja"><h3>Melon Pan • メロンパン</h3><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600" alt="Melon Pan"><p>Pan dulce japonés crujiente por fuera</p><p class="precio">¥230</p><button class="btn2" onclick="agregar('Melon Pan',230)">+ Agregar</button></div>
+</div>
+
+<div class="seccion" id="postres"><h2>Tres platos que hacemos <i>cada día.</i></h2><p>毎日作る三つの料理</p></div>
+<div class="contenido">
+  <div class="caja"><h3>Tabla de Bebidas Japonesas</h3><table><tr><th>Bebida • 飲み物</th><th>Precio • 価格</th></tr><tr><td>Matcha Latte • 抹茶ラテ</td><td>¥650</td></tr><tr><td>Hojicha Latte • ほうじ茶ラテ</td><td>¥650</td></tr><tr><td>Sakura Latte • 桜ラテ</td><td>¥700</td></tr><tr><td>Genmaicha Latte • 玄米茶ラテ</td><td>¥600</td></tr><tr><td>Yuzu Lemonade • 柚子レモネード</td><td>¥550</td></tr><tr><td>Ramune • ラムネ</td><td>¥180</td></tr><tr><td>Té Verde Japonés • 緑茶</td><td>¥400</td></tr></table></div>
+  <div class="caja"><h3>Lista de Bebidas Japonesas</h3><ul><li><b>Matcha Latte:</b> Té verde matcha de Uji con leche - ¥650</li><li><b>Hojicha Latte:</b> Té japonés tostado - ¥650</li><li><b>Sakura Latte:</b> Flor de cerezo japonesa - ¥700</li><li><b>Genmaicha Latte:</b> Té verde con arroz tostado - ¥600</li><li><b>Yuzu Lemonade:</b> Limonada de yuzu - ¥550</li><li><b>Ramune:</b> Soda japonesa tradicional - ¥180</li><li><b>Té Verde Japonés:</b> Sencha de Shizuoka - ¥400</li></ul></div>
+</div>
+<div class="contenido">
+  <div class="caja"><h3>Tabla de Postres Japoneses</h3><table><tr><th>Postre • デザート</th><th>Precio • 価格</th></tr><tr><td>Mochi (3 piezas) • 餅</td><td>¥450</td></tr><tr><td>Dorayaki • どら焼き</td><td>¥220</td></tr><tr><td>Taiyaki • たい焼き</td><td>¥250</td></tr><tr><td>Daifuku de fresa • いちご大福</td><td>¥280</td></tr><tr><td>Cheesecake Japonés • チーズケーキ</td><td>¥680</td></tr><tr><td>Melon Pan • メロンパン</td><td>¥230</td></tr></table></div>
+  <div class="caja"><h3>Lista de Postres Japoneses</h3><ul><li><b>Mochi:</b> Arroz japonés, matcha o fresa - ¥450</li><li><b>Dorayaki:</b> Hotcakes japoneses con anko - ¥220</li><li><b>Taiyaki:</b> Panecito japonés en forma de pez - ¥250</li><li><b>Daifuku:</b> Mochi japonés con fresa y crema - ¥280</li><li><b>Cheesecake Japonés:</b> Esponjoso, estilo Osaka - ¥680</li><li><b>Melon Pan:</b> Pan dulce japonés crujiente - ¥230</li></ul></div>
+</div>
+
+<div class="banner">
+  <h2>Mañanas lentas,<br>rincones cálidos,<br>y <i>sin prisa.</i></h2>
+  <p>ゆっくりした朝、温かい隅、そして急ぐところはどこにもない</p>
+  <p>No apuramos tu café. No apuramos tu mesa.</p><br>
+  <p>ありがとう • Gracias por venir 🇯🇵</p><br>
+  <button class="btn" onclick="ordenar()">Ven a sentarte con nosotros</button>
+</div>
+
+<footer id="contacto">
+  <h3>Ven a sentarte con nosotros <i>un rato.</i></h3>
+  <p>日本 • Kyoto 京都 • Tokyo 東京 • Osaka 大阪</p>
+  <p>📸 Instagram: <a href="https://www.instagram.com/kaeru.coffee" target="_blank">@kaeru.coffee</a></p>
+  <p>🎵 Playlist KAERU v2.0: Stay With Me • SAUCIN • Supernova • Supernova Love • HWAA • HAWWAH</p>
+  <p>Correo: <a href="mailto:hola@kaeru.coffee">hola@kaeru.coffee</a></p>
+  <p>Horario: Lun - Vie 8am - 7pm | Sáb - Dom 9am - 6pm</p>
+  <p>© 2026 KAERU COFFEE - かえるコーヒー • Versión 2.0 Actualizada</p>
+</footer>
+
+<div class="carrito" onclick="ordenar()">🛒 Carrito: <span id="contador">0</span> - ¥<span id="total">0</span></div>
+
+<script>
+  var contador = 0;
+  var total = 0;
+  var sonando = false;
+  var canciones = [
+    { nombre: "Stay With Me", artista: "Miki Matsubara", archivo: "Stay-With-Me.mp4" },
+    { nombre: "SAUCIN", artista: "NEXZ", archivo: "SAUCIN.mp4" },
+    { nombre: "Supernova", artista: "aespa", archivo: "Supernova.mp4" },
+    { nombre: "Supernova Love", artista: "IVE x David Guetta", archivo: "SupernovaLove.mp4" },
+    { nombre: "HWAA", artista: "(G)I-DLE", archivo: "HWAA.mp4" },
+    { nombre: "HAWWAH", artista: "dodree", archivo: "HAWWAH.mp4" }
+  ];
+  var indice = 0;
+  var audio = document.getElementById("musica");
+  var playlistDiv = document.getElementById("playlist");
+  canciones.forEach(function(c, i){
+    var b = document.createElement("button");
+    b.textContent = (i+1) + ". " + c.nombre + " - " + c.artista;
+    b.onclick = function(){ reproducir(i); };
+    playlistDiv.appendChild(b);
+  });
+  function actualizarLista(){
+    var botones = playlistDiv.querySelectorAll("button");
+    botones.forEach(function(b, i){
+      if(i === indice){ b.classList.add("activa"); } else { b.classList.remove("activa"); }
+    });
+  }
+  function reproducir(i){
+    indice = i;
+    audio.src = canciones[i].archivo;
+    audio.play();
+    sonando = true;
+    document.getElementById("sonandoTexto").textContent = "🎵 Sonando: " + canciones[i].nombre + " - " + canciones[i].artista;
+    document.getElementById("btnMusica").textContent = "⏸ " + canciones[i].nombre;
+    document.getElementById("mensaje").textContent = "Sonando: " + canciones[i].nombre + " 🎵";
+    actualizarLista();
+  }
+  function siguiente(){
+    indice = (indice + 1) % canciones.length;
+    reproducir(indice);
+  }
+  function anterior(){
+    indice = (indice - 1 + canciones.length) % canciones.length;
+    reproducir(indice);
+  }
+  audio.addEventListener("ended", siguiente);
+  function agregar(nombre, precio){
+    contador = contador + 1;
+    total = total + precio;
+    document.getElementById("contador").textContent = contador;
+    document.getElementById("total").textContent = total;
+    document.getElementById("mensaje").textContent = nombre + " agregado ✅";
+  }
+  function filtrar(tipo){
+    document.getElementById("mensaje").textContent = "Mostrando: " + tipo;
+  }
+  function ordenar(){
+    document.getElementById("mensaje").textContent = "¡Gracias! Tu pedido está en preparación 🍵🍡";
+    alert("¡Gracias por ordenar en KAERU COFFEE! Total: ¥" + total);
+  }
+  function sonar(){
+    if(sonando == false){
+      if(!audio.src){ reproducir(indice); } else { audio.play(); sonando = true; }
+      document.getElementById("btnMusica").textContent = "⏸ " + canciones[indice].nombre;
+      document.getElementById("mensaje").textContent = "Sonando: " + canciones[indice].nombre + " 🎵";
+    } else {
+      audio.pause();
+      sonando = false;
+      document.getElementById("btnMusica").textContent = "▶️ Play";
+      document.getElementById("mensaje").textContent = "Música pausada 🔇";
+    }
+  }
+  actualizarLista();
+</script>
+
+</body>
+</html>
